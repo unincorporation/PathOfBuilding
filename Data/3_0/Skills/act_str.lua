@@ -10,25 +10,31 @@ skills["AbyssalCry"] = {
 	name = "Abyssal Cry",
 	color = 1,
 	description = "Performs a warcry, Hindering nearby enemies and causing them to explode when killed. The Hinder effect is proportional to the number of surrounding enemies. Taunts all nearby enemies to attack the user. Shares a cooldown with other Warcry skills.",
-	skillTypes = { [11] = true, [12] = true, [50] = true, [10] = true, [74] = true, },
+	skillTypes = { [2] = false, [11] = true, [12] = false, [50] = true, [10] = true, [75] = true, },
 	baseFlags = {
-		warcry = true,
+		spell = false,
+		instant = true,
 		area = true,
-		duration = true,
+		duration = false,
 		chaos = true,
 	},
 	baseMods = {
-		skill("castTime", 0.25), 
-		skill("cooldown", 4), 
+		skill("CritChance",0),
+		skill("corpseExplosionLifeMultiplier",0.25), --"corpse_explosion_monster_life_%" = 25
+		--"is_area_damage" = ?
+		skill("radius",25),
+		skill("explodeCorpse",true),
+		skill("castTime", nil), 
+		skill("cooldown", nil), 
 		--"abyssal_cry_%_max_life_as_chaos_on_death" = 8
 		skill("duration", 6), --"base_skill_effect_duration" = 6000
 		--"damage_cannot_be_reflected" = ?
 		skill("showAverage", true), --"base_skill_show_average_damage_instead_of_dps" = ?
 		--"display_skill_deals_secondary_damage" = ?
 	},
-	qualityMods = {
-		mod("Duration", "INC", 1), --"skill_effect_duration_+%" = 1
-	},
+	--qualityMods = {
+		--mod("Duration", "INC", 1), --"skill_effect_duration_+%" = 1
+	--},
 	levelMods = {
 		[1] = skill("levelRequirement", nil), 
 		[2] = skill("manaCost", nil), 
